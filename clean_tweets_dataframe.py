@@ -21,16 +21,16 @@ class Clean_Tweets:
         drop duplicate rows
         """
        df.drop_duplicates(inplace=True)
-        ---
+        
         
         return df
     def convert_to_datetime(self, df:pd.DataFrame)->pd.DataFrame:
         """
         convert column to datetime
         """
-        ----
+        
         df['created_at'] =  df['created_at'].apply(lambda d: datetime.strptime(d,'%a %b %d %H:%M:%S %z %Y').strftime('%Y-%m-%d'))
-        ----
+        
         
         df = df[df['created_at'] >= '2020-12-31' ]
         
@@ -43,8 +43,7 @@ class Clean_Tweets:
         """
         df[['polarity', 'subjectivity', 'retweet_count', 'favorite_count']] = df[['polarity', 'subjectivity', 'retweet_count', 'favorite_count']].apply(pd.to_numeric)
         
-        ----
-        ----
+        
         
         return df
     
