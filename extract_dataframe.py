@@ -61,7 +61,7 @@ class TweetDfExtractor:
         subjectivity = []
         for txt in text:
               if (txt):
-                sentiment = TextBlob(str(tx)).sentiment
+                sentiment = TextBlob(str(txt)).sentiment
                 polarity.append(sentiment.polarity)
                 subjectivity.append(sentiment.subjectivity)
         
