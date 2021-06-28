@@ -35,10 +35,10 @@ class TweetDfExtractor:
 
     # an example function
     def find_statuses_count(self)->list:
-        statuses_count 
+        return statuses_count 
         
     def find_full_text(self)->list:
-        text = 
+        return text
        
     
     def find_sentiments(self, text)->list:
