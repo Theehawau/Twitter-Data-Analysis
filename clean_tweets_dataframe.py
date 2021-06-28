@@ -29,7 +29,7 @@ class Clean_Tweets:
         convert column to datetime
         """
         ----
-        df['created_at'] =  df['created_at'].apply(lambda d: pd.Timestamp(d).strftime('%Y-%m-%d'))
+        df['created_at'] =  df['created_at'].apply(lambda d: datetime.strptime(d,'%a %b %d %H:%M:%S %z %Y').strftime('%Y-%m-%d'))
         ----
         
         df = df[df['created_at'] >= '2020-12-31' ]
@@ -41,7 +41,7 @@ class Clean_Tweets:
         convert columns like polarity, subjectivity, retweet_count
         favorite_count etc to numbers
         """
-        df['polarity'] = pd.----
+        df[['polarity', 'subjectivity', 'retweet_count', 'favorite_count']] = df[['polarity', 'subjectivity', 'retweet_count', 'favorite_count']].apply(pd.to_numeric)
         
         ----
         ----
