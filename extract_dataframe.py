@@ -51,7 +51,7 @@ class TweetDfExtractor:
                     texts.append(tweet['retweeted_status']['text'])
                 else:
                     texts.append(tweet['retweeted_status']['extended_tweet']['full_text'])
-           elif tweet['truncated'] == False:
+            elif tweet['truncated'] == False:
                 texts.append(tweet['text'])
         return texts
        
