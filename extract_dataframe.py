@@ -83,7 +83,7 @@ class TweetDfExtractor:
             if 'possibly_sensitive' in tweet.keys(): 
                  is_sensitive.append(tweet['possibly_sensitive'])
             else:is_sensitive.append(None)
-        return is_sensitive
+       return is_sensitive
 
     def find_favourite_count(self)->list:
         favorite_count=[]
