@@ -22,7 +22,6 @@ class Clean_Tweets:
         """
        df.drop_duplicates(inplace=True)
         
-        
         return df
     def convert_to_datetime(self, df:pd.DataFrame)->pd.DataFrame:
         """
@@ -30,8 +29,6 @@ class Clean_Tweets:
         """
         
         df['created_at'] =  df['created_at'].apply(lambda d: datetime.strptime(d,'%a %b %d %H:%M:%S %z %Y').strftime('%Y-%m-%d'))
-        
-        
         df = df[df['created_at'] >= '2020-12-31' ]
         
         return df
