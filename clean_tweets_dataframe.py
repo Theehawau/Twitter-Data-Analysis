@@ -40,8 +40,6 @@ class Clean_Tweets:
         """
         df[['polarity', 'subjectivity', 'retweet_count', 'favorite_count']] = df[['polarity', 'subjectivity', 'retweet_count', 'favorite_count']].apply(pd.to_numeric)
         
-        
-        
         return df
     
     def remove_non_english_tweets(self, df:pd.DataFrame)->pd.DataFrame:
