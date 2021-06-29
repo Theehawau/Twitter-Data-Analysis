@@ -44,7 +44,9 @@ class TweetDfExtractor:
                 texts.append(tweet['extended_tweet']['full_text'])
             elif 'retweeted_status' in tweet.keys():
                 if 'quoted_status' in tweet['retweeted_status'].keys():
-                    texts.append(tweet['retweeted_status']['text'])
+                    if tweet['retweeted_status']['quoted_status']['truncated'] == False:
+                        texts.append(tweet['retweeted_status']['quoted_status']['text'])
+                    else:texts.append(tweet['retweeted_status']['quoted_status']['extended_tweet']['full_text'])
                 elif tweet['retweeted_status']['truncated'] == False:
                     texts.append(tweet['retweeted_status']['text'])
                 else:
@@ -57,10 +59,13 @@ class TweetDfExtractor:
         polarity = []
         subjectivity = []
         for txt in text:
-              if (txt):
+              if txt != '' :
                 sentiment = TextBlob(str(txt)).sentiment
                 polarity.append(sentiment.polarity)
                 subjectivity.append(sentiment.subjectivity)
+              else:
+                polarity.append(0)
+                subjectivity.append(0)
         return polarity,subjectivity
 
     def find_created_time(self)->list:
@@ -87,7 +92,7 @@ class TweetDfExtractor:
 
     def find_favourite_count(self)->list:
         favorite_count=[]
-        for tweet in tweets_data:
+        for tweet in self.tweets_list:
             if 'retweeted_status' in tweet.keys(): 
                 favorite_count.append(tweet['retweeted_status']['favorite_count'])
             else:
